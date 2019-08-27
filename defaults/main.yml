@@ -1,0 +1,7 @@
+---
+# defaults file for sysmanagerone-agent
+
+sysmanagerone_id: customerid
+sysmanagerone_server_ip: 1.1.1.1
+sysmanagerone_dir: /usr/local/sysmanagerone
+sysmanagerone_agent_mode: install

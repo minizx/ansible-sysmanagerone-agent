@@ -1,0 +1,26 @@
+---
+
+- name: Creates sysmanagerone agent directory
+  file:
+    path: "{{ sysmanagerone_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0700
+    recurse: yes
+
+- name: Unpack the sysmanagerone agent
+  unarchive:
+    src: linux2.6.tar
+    dest: "{{ sysmanagerone_dir }}"
+
+- name: sysmanagerone agent install script copy
+  template:
+    src: install_sysmanagerone.sh.j2
+    dest: "{{ sysmanagerone_dir }}/install_sysmanagerone.sh"
+    owner: root
+    group: root
+    mode: 0700
+
+- name: sysmanagerone agent install and start
+  shell: "{{ sysmanagerone_dir }}/install_sysmanagerone.sh"

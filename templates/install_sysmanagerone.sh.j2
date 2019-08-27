@@ -1,0 +1,27 @@
+##### 시스매니저원 에이전트 설치 스크립트 #####
+
+
+#!/bin/bash
+
+### 시스매니저원 접속 설정
+# 고객사 ID
+SYSMANAGERONE_ID=@{{ sysmanagerone_id }}
+## 시스매니저원 서버 IP
+SYSMANAGERONE_SERVER_IP={{ sysmanagerone_server_ip }}
+## 설치 DIR
+SYSMANAGERONE_DIR={{ sysmanagerone_dir }}
+ 
+ 
+### 시스매니저원 경로 권한 설정 
+# 실행 권한 설정
+chmod 700 $SYSMANAGERONE_DIR/*
+ 
+ 
+### 서비스 시작, 설치
+cd $SYSMANAGERONE_DIR
+
+./start <<END
+$SYSMANAGERONE_ID
+$SYSMANAGERONE_SERVER_IP
+END
+ 

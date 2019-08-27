@@ -1,0 +1,37 @@
+---
+# tasks file for sysmanagerone-agent
+
+- name: kernel 2.2 version (32bit)
+  include: "install-linux2.2-32.yml"
+  when:
+    - ansible_kernel is version_compare('2.2','>=')
+    - ansible_kernel is version_compare('2.4','<')
+    - ansible_userspace_bits is version_compare('32','=')
+  tags:
+    - sysmanagerone-agent
+
+- name: kernel 2.4 version (32bit)
+  include: "install-linux2.4-32.yml"
+  when:
+    - ansible_kernel is version_compare('2.4','>=')
+    - ansible_kernel is version_compare('2.6','<')
+    - ansible_userspace_bits is version_compare('32','=')
+  tags:
+    - sysmanagerone-agent
+
+- name: kernel 2.6 and over version (32bit)
+  include: "install-linux2.6-32.yml"
+  when:
+    - ansible_kernel is version_compare('2.6','>=')
+    - ansible_userspace_bits is version_compare('32','=')
+  tags:
+    - sysmanagerone-agent
+
+- name: kernel 2.6 and over version (64bit)
+  include: "install-linux2.6-64.yml"
+  when:
+    - ansible_kernel is version_compare('2.6','>=')
+    - ansible_userspace_bits is version_compare('64','=')
+  tags:
+    - sysmanagerone-agent
+
