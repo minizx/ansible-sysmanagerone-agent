@@ -1,0 +1,14 @@
+##### 시스매니저원 에이전트 삭제 스크립트 #####
+
+
+#!/bin/bash
+
+
+# 서비스 중지
+$SYSMANAGERONE_DIR/stop
+ 
+### 에이전트 파일 삭제
+rm -rf $SYSMANAGERONE_DIR
+
+### 서비스 시작 설정 제거
+sed -i '/\/usr\/local\/sysmanagerone\/avsms/d' /etc/rc.local
